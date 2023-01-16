@@ -21,9 +21,6 @@ import datetime
 from backend import predict, preprocess, csv_function
 
 
-error=False
-error_code=[]
-
 REFRESH_TOKEN = st.secrets["REFRESH_TOKEN"]
 APP_KEY = st.secrets["APP_KEY"]
 APP_SECRET = st.secrets["APP_SECRET"]
@@ -67,7 +64,7 @@ uploaded_file = st.sidebar.file_uploader("画像をアップロードしてく�
 
 dbx = dropbox.Dropbox(oauth2_refresh_token=REFRESH_TOKEN, app_key=APP_KEY, app_secret=APP_SECRET)
 
-csv_function.file_check(file_path,dbx_path, dbx,column)
+error, error_code = csv_function.file_check(file_path,dbx_path, dbx,column)
 
 # 以下ファイルがアップロードされた時の処理
 if uploaded_file is not None:
@@ -89,7 +86,6 @@ if uploaded_file is not None:
     except Exception as e:
         error=True
         error_code.append('image_upload_error:'+str(e))
-
 
     try:
         patches = preprocess.preprocess(img)
