@@ -81,8 +81,8 @@ if uploaded_file is not None:
         with open(uploaded_file.name, 'wb') as f:
             f.write(uploaded_file.read())
             dbx.files_upload(open(uploaded_file.name, 'rb').read(), '/'+"img_"+str(date)+'_'+str(time)+'_'+species_name+'.'+format)
-        os.remove(uploaded_file.name)
         img = Image.open(uploaded_file)
+        os.remove(uploaded_file.name)
     except Exception as e:
         error=True
         error_code.append('image_upload_error:'+str(e))
