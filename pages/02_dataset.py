@@ -35,9 +35,9 @@ with tab2:
 
 st.header('TWTwNo一覧')
 
-df_10_differ = pd.read_csv("./TWTwNo/TWTwNo_50.csv")
-df_10_same = pd.read_csv("./TWTwNo/TWTwNo_10_different.csv")
-df_50 = pd.read_csv("./TWTwNo/TWTwNo_10_same.csv")
+df_10_differ = pd.read_csv("./TWTwNo/TWTwNo_10_different.csv")
+df_10_same = pd.read_csv("./TWTwNo/TWTwNo_10_same.csv")
+df_50 = pd.read_csv("./TWTwNo/TWTwNo_50.csv")
 
 col3, col4, col5 = st.columns(3)
 
@@ -50,8 +50,8 @@ with tab3:
 
 with tab4:
    st.header("10種 4型\n**10 species 4types**")
-   st.write(df_10_same)
+   st.write(df_10_differ)
 
 with tab5:
    st.header("10種 1型\n**10 species 1type**")
-   st.write(df_10_differ)
+   st.write(df_10_same)
